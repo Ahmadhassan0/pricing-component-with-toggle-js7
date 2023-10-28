@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+:root {
+/* ### Primary */
+--linear-gradient-1: hsl(236, 72%, 79%);
+--linear-gradient-2: hsl(237, 63%, 64%);
+
+/* ### Neutral */
+--very-light-grayish-blue: hsl(240, 78%, 98%);
+--light-grayish-blue: hsl(234, 14%, 74%);
+--grayish-blue: hsl(233, 13%, 49%);
+--dark-grayish-blue: hsl(232, 13%, 33%);
+--color-white: #ffffff;
+--ff-primary: 'Montserrat', sans-serif;
+--fw-bold: 700;
+}
+
+/* ===================================================
+                    General CSS
+====================================================== */
+*, ::before, ::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    font-family: var(--ff-primary);
+    background: var(--very-light-grayish-blue);
+}
+
+body::before {
+    content: url(./images/bg-top.svg);
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+}
+
+body::after {
+    content: url(./images/bg-bottom.svg);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+
+img {
+    display: block;
+    width: 100%;
+}
+
+/* ===================================================
+                    Pricing Section
+====================================================== */
+.pricing {
+    min-width: 54rem;
+    max-width: 70%;
+    margin: 4rem auto 7rem;
+    text-align: center;
+}
+
+.pricing__heading {
+    color: var(--grayish-blue);
+}
+
+.pricing__toggle__box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem auto 3rem;
+    color: var(--light-grayish-blue);
+}
+
+.toggle__btn {
+    background: linear-gradient(to right, var(--linear-gradient-1), var(--linear-gradient-2));
+    width: 4rem;
+    height: 2rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.toggle__btn.active {
+    justify-content: flex-end;
+}
+
+.toggle__circle {
+    background: var(--color-white);
+    margin-left: .2rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+}
+.toggle__btn.active .toggle__circle {
+    margin-right: .2rem;
+}
+
+
+.pricing__grid__box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    /* box-shadow: -7px 7px 13px -9px rgba(0, 0, 0, .5); */
+    /* background: none; */
+}
+
+.pricing__plan {
+    background: var(--color-white);
+    color: var(--grayish-blue);
+    padding: 2rem;
+    /* box-shadow: -7px 7px 13px -9px rgba(0, 0, 0, .5); */
+    /* border: 2px solid green; */
+}
+
+.pricing__price {
+    font-size: 4rem;
+    color: var(--dark-grayish-blue);
+    margin: 1.8rem 0;
+}
+
+.pricing__price.annually {
+    display: none;
+}
+
+.pricing__grid__box.active .pricing__price.annually {
+    display: block;
+}
+
+.pricing__grid__box.active .pricing__price.monthly {
+    display: none;
+}
+
+.pricing__plan__features .feature {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--light-grayish-blue);
+}
+
+.pricing__plan__features .feature:first-child {
+    border-top: 1px solid var(--light-grayish-blue);
+}
+
+
+.btn {
+    background: linear-gradient(to right, var(--linear-gradient-1), var(--linear-gradient-2));
+    width: 100%;
+    display: block;
+    padding: 1rem 0;
+    color: var(--color-white);
+    border-radius: .4rem;
+    margin-top: 2.5rem;
+    border: 2px solid transparent;
+}
+
+.btn:hover {
+    background: transparent;
+    border: 2px solid var(--grayish-blue);
+    color: var(--linear-gradient-2);
+}
+
+
+.pricing__plan.professional {
+    background: linear-gradient(to right, var(--linear-gradient-1), var(--linear-gradient-2));
+    color: var(--color-white);
+    padding: 3rem 2rem;
+    border-radius: .4rem;
+
+}
+
+.pricing__plan.professional .pricing__price {
+    color: var(--color-white);
+}
+
+.btn.btn-primary {
+    background: var(--color-white);
+    color: var(--linear-gradient-2);
+}
+
+.btn.btn-primary:hover {
+    background: transparent;
+    color: var(--color-white);
+    border-color: var(--color-white);
+}
+
+.pricing__plan:first-child {
+    border-radius: .4rem 0 0 .4rem
+}
+
+.pricing__plan:last-child {
+    border-radius: 0 .4rem .4rem 0;
+}
+
+/* ===================================================
+                    Media Query(Tablet)
+====================================================== */
+@media screen and (max-width: 54.37em) {
+    .pricing {
+        min-width: 19rem;
+        max-width: 90%;
+    }
+
+    .pricing__grid__box {
+        grid-template-columns: 1fr;
+        margin: auto;
+        gap: 1.8rem;
+    }
+
+    .pricing__plan:first-child,
+    .pricing__plan:last-child {
+        border-radius: .4rem;
+    }
+}
